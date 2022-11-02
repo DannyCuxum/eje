@@ -478,7 +478,7 @@ func MonstrarMount() {
 	}
 }
 
-//para si esta montado el id ingresado
+// para si esta montado el id ingresado
 func valMontado(_id string) bool {
 
 	for i := 0; i < 99; i++ {
@@ -800,6 +800,7 @@ func generaReporte(f_name bool, f_id bool, f_path bool, _name string, _id string
 	//fmt.Println(contenido)
 	fmt.Println("Fin Grafica......................")
 	//Se valida el directorio para guardar
+	ReporteFInal = contenido //aqui seteo el .dot
 	cont_Diagonal := 0
 	for _, ele := range _path {
 		if strings.Compare(string(ele), "/") == 0 {
@@ -858,7 +859,7 @@ func generaReporte(f_name bool, f_id bool, f_path bool, _name string, _id string
 
 		fmt.Println("Segunda Grafica en ruta: ", nombref)
 		fmt.Println("Se enviara lo de base 64...")
-		convert64F(nombref)
+		//convert64F(nombref)
 		repVali = true
 
 	} else { // no existe el directorio
@@ -897,7 +898,7 @@ func generaReporte(f_name bool, f_id bool, f_path bool, _name string, _id string
 
 		fmt.Println("Segunda Grafica en ruta: ", nombref)
 		fmt.Println("Se enviara lo de base 64...")
-		convert64F(nombref)
+		//convert64F(nombref)
 		repVali = true
 
 	}
@@ -990,6 +991,7 @@ func generarTree(f_name bool, f_id bool, f_path bool, _name string, _id string, 
 		fmt.Println("Grafica.......................")
 		//fmt.Println(contenido)
 		fmt.Println("Fin Grafica......................")
+		ReporteFInal = contenido
 		//Se valida el directorio para guardar
 		cont_Diagonal := 0
 		for _, ele := range _path {
@@ -1049,7 +1051,7 @@ func generarTree(f_name bool, f_id bool, f_path bool, _name string, _id string, 
 
 			fmt.Println("Segunda Grafica en ruta: ", nombref)
 			fmt.Println("Se enviara lo de base 64...")
-			convert64F(nombref)
+			//convert64F(nombref)
 			repVali = true
 
 		} else { // no existe el directorio
@@ -1088,7 +1090,7 @@ func generarTree(f_name bool, f_id bool, f_path bool, _name string, _id string, 
 
 			fmt.Println("Segunda Grafica en ruta: ", nombref)
 			fmt.Println("Se enviara lo de base 64...")
-			convert64F(nombref)
+			//convert64F(nombref)
 			repVali = true
 		}
 
@@ -1099,7 +1101,7 @@ func generarTree(f_name bool, f_id bool, f_path bool, _name string, _id string, 
 
 }
 
-//generando superbloque aun esta a prueba
+// generando superbloque aun esta a prueba
 func generarSB(f_name bool, f_id bool, f_path bool, _name string, _id string, _path string) {
 	fmt.Println("Se validara reporte SB......")
 	fmt.Println("ID ingrsado-------" + _id)
@@ -1196,6 +1198,7 @@ func generarSB(f_name bool, f_id bool, f_path bool, _name string, _id string, _p
 		//fmt.Println(contenido)
 		fmt.Println("Fin Grafica......................")
 		//Se valida el directorio para guardar
+		ReporteFInal = contenido
 		cont_Diagonal := 0
 		for _, ele := range _path {
 			if strings.Compare(string(ele), "/") == 0 {
@@ -1254,7 +1257,7 @@ func generarSB(f_name bool, f_id bool, f_path bool, _name string, _id string, _p
 
 			fmt.Println("Segunda Grafica en ruta: ", nombref)
 			fmt.Println("Se enviara lo de base 64...")
-			convert64F(nombref)
+			//convert64F(nombref)
 			repVali = true
 
 		} else { // no existe el directorio
@@ -1293,7 +1296,7 @@ func generarSB(f_name bool, f_id bool, f_path bool, _name string, _id string, _p
 
 			fmt.Println("Segunda Grafica en ruta: ", nombref)
 			fmt.Println("Se enviara lo de base 64...")
-			convert64F(nombref)
+			//convert64F(nombref)
 			repVali = true
 		}
 
@@ -1324,7 +1327,7 @@ func crearDirectorioRep(directorio string) { //error al crear el directori
 	}
 }
 
-//Generando Formateo XT2 simulado
+// Generando Formateo XT2 simulado
 func formateoEXT(_id string) bool {
 
 	for i := 0; i < 99; i++ {
@@ -1354,7 +1357,7 @@ func formateoEXT(_id string) bool {
 
 }
 
-//base 64:
+// base 64:
 func convert64F(rutaImage string) {
 	imgFile, err := os.Open(rutaImage) // a QR code image
 

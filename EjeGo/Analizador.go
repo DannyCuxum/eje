@@ -11,6 +11,8 @@ var cadenaf string = ""
 var imagenFinalRep string = ""
 var repVali = false
 
+var ReporteFInal = ""
+
 func AnalizadorComando(comando string) {
 
 	lineacomando := "" // donde se guarda el primer comando

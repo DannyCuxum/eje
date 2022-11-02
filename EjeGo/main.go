@@ -140,6 +140,38 @@ func valiLogin(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(respuesta) //solicito el dato agregado
 
 }
+
+func analissisRepDot(w http.ResponseWriter, r *http.Request) {
+
+	var nweT ComandoI
+	var respuesta DatoRepIMG
+	reqBoy, err := ioutil.ReadAll(r.Body)
+
+	if err != nil { //si hay errores
+		fmt.Fprintf(w, "inserte datos Validos")
+
+	}
+	json.Unmarshal(reqBoy, &nweT)
+
+	fmt.Println("Iformacion: ", nweT.Exp)
+	AnalisisContenido(nweT.Exp)
+
+	fmt.Println("----------------------------------------")
+	//Aqui mando una respuesta al front
+	respuesta.Validate = repVali
+	respuesta.Contenido = cadenaf
+	respuesta.Datob64 = ReporteFInal
+	fmt.Println(ReporteFInal)
+	cadenaf = ""
+	ReporteFInal = "" //limpio la variable
+	repVali = false   //aqui lo regreso a false
+	//fmt.Println("Lo generado : ")
+	//fmt.Println(cadenaf)
+	w.Header().Set("Content-Type", "application/json") //tipo de dato
+	json.NewEncoder(w).Encode(respuesta)               //solicito el dato agregado
+
+}
+
 func main() {
 
 	fmt.Println("Hola Perros")
@@ -152,7 +184,8 @@ func main() {
 	origins := handlers.AllowedOrigins([]string{"*"})
 	router.HandleFunc("/login", valiLogin).Methods("POST")
 	router.HandleFunc("/Comandos", AnalisisCadena).Methods("POST")
-	router.HandleFunc("/reportes", analissisRepb64).Methods("POST")
+	//router.HandleFunc("/reportes", analissisRepb64).Methods("POST")
+	router.HandleFunc("/reportes", analissisRepDot).Methods("POST")
 	log.Fatal(http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router)))
 
 	///ENABLECORS lo estoy agregando
